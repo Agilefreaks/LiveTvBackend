@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'graphql'
 require 'schema/types/live_channel_type'
+require 'schema/resolvers/live_channels_resolver'
 
 module Livetv
   module Types
@@ -12,7 +13,7 @@ module Livetv
         type types[LiveChannelType]
         description 'List all live channels'
 
-        resolve ->(_obj, _arg, _ctx) { [Livetv::Entities::LiveChannel.new(id: 42, name: 'one'), Livetv::Entities::LiveChannel.new(id: 43, name: 'Two')] }
+        resolve(Livetv::Resolvers::LiveChannelsResolver.new)
       end
     end
   end

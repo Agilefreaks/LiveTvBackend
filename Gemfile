@@ -28,6 +28,9 @@ gem 'dry-view', '>= 0.2.2'
 gem 'graphql'
 gem 'slim'
 
+# Fake it until you make it
+gem 'faker'
+
 group :development, :test do
   gem 'pry-byebug', platform: :mri
   gem 'rubocop'
