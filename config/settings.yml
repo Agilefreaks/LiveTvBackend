@@ -1,0 +1,8 @@
+development: &base
+  database_url: 'postgres://localhost/livetv_development'
+  session_secret: 'b8aec966c445e50a82f870d58fa8ffb8'
+test:
+  <<: *base
+  database_url: 'postgres://localhost/livetv_test'
+production:
+  <<: *base
