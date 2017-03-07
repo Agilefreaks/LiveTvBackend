@@ -19,10 +19,9 @@ module Livetv
              [:all, { 'Cache-Control' => 'public, max-age=86400' }],
              ['/assets', { 'Cache-Control' => 'public, max-age=31536000' }]
            ]
-    plugin :csrf, raise: false
+    plugin :csrf, raise: false, check_only: ['POST:/']
     plugin :flash
     plugin :dry_view
-    plugin :json
 
     route do |r|
       r.multi_route

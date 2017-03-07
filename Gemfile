@@ -25,14 +25,17 @@ gem 'dry-transaction'
 gem 'dry-types'
 gem 'dry-validation'
 gem 'dry-view', '>= 0.2.2'
+gem 'graphql'
 gem 'slim'
 
 group :development, :test do
   gem 'pry-byebug', platform: :mri
   gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do
   gem 'database_cleaner'
+  gem 'rack-test'
   gem 'rspec'
 end

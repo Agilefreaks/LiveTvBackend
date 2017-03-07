@@ -3,17 +3,21 @@ require 'bundler/setup'
 
 require 'byebug' unless ENV['RACK_ENV'] == 'production'
 
+# rubocop:disable HandleExceptions
 begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new :spec
   task default: [:spec]
 rescue LoadError
+  # ignored
 end
 
 require_relative 'system/livetv/container'
 
 require 'rom/sql/rake_task'
 require 'sequel'
+
+# rubocop:disable Style/BlockLength
 namespace :db do
   task :setup do
     Livetv::Container.boot! :rom
@@ -27,7 +31,7 @@ namespace :db do
   task :version do
     version = if DB.tables.include?(:schema_migrations)
                 DB[:schema_migrations].order(:filename).last[:filename]
-    end || 'not available'
+              end || 'not available'
 
     puts "Current schema version: #{version}"
   end
