@@ -7,6 +7,7 @@ gem 'rake'
 gem 'dry-web', '>= 0.6.0'
 gem 'dry-web-roda', '>= 0.6.0'
 gem 'puma'
+gem 'rack_csrf'
 
 gem 'rack', '>= 2.0'
 gem 'shotgun', '>= 0.9.2'
@@ -23,6 +24,8 @@ gem 'dry-struct'
 gem 'dry-transaction'
 gem 'dry-types'
 gem 'dry-validation'
+gem 'dry-view', '>= 0.2.2'
+gem 'slim'
 
 group :development, :test do
   gem 'pry-byebug', platform: :mri

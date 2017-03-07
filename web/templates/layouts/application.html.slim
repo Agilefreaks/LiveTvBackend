@@ -1,0 +1,24 @@
+html lang="en"
+  head
+    meta charset="utf-8"
+    css:
+      | body {
+        | height: 100 %;
+        | margin: 0;
+        | width: 100 %;
+        | overflow: hidden;
+      | }
+
+      #graphiql {
+        | height: 100 vh;
+      | }
+    link rel="stylesheet" type="text/css" href="/assets/graphiql.css"
+    javascript: window.fetch || document.write('<script src="vendor/fetch.min.js">\x3C/script>');
+    script src="//cdn.jsdelivr.net/react/15.0.1/react.min.js"
+    javascript: window.React || document.write('<script src="vendor/react-15.0.1.min.js">\x3C/script>');
+    script src="//cdn.jsdelivr.net/react/15.0.1/react-dom.min.js"
+    javascript: window.ReactDOM || document.write('<script src="vendor/react-dom-15.0.1.min.js">\x3C/script>');
+    script type="text/javascript" src="/assets/graphiql.js"    title Livetv
+    == csrf_metatag
+  body
+    == yield
