@@ -7,6 +7,7 @@ gem 'rake'
 gem 'dry-web', '>= 0.6.0'
 gem 'dry-web-roda', '>= 0.6.0'
 gem 'puma'
+gem 'rack_csrf'
 
 gem 'rack', '>= 2.0'
 gem 'shotgun', '>= 0.9.2'
@@ -23,13 +24,21 @@ gem 'dry-struct'
 gem 'dry-transaction'
 gem 'dry-types'
 gem 'dry-validation'
+gem 'dry-view', '>= 0.2.2'
+gem 'graphql'
+gem 'slim'
+
+# Fake it until you make it
+gem 'faker'
 
 group :development, :test do
   gem 'pry-byebug', platform: :mri
   gem 'rubocop'
+  gem 'rubocop-rspec'
 end
 
 group :test do
   gem 'database_cleaner'
+  gem 'rack-test'
   gem 'rspec'
 end
