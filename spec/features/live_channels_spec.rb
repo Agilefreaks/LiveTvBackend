@@ -32,5 +32,13 @@ RSpec.describe 'Live Channels', type: :request do
         expect(result['data']['live_channels'].first['now_playing']['starts_at']).not_to be_nil
       end
     end
+
+    context 'including items with content' do
+      let(:query) { '{ live_channels { name items { content { title }  }  } }' }
+
+      it 'will return upcoming items' do
+        expect(result['data']['live_channels'].first['items'].first['content']['title']).to eq 'Upcoming'
+      end
+    end
   end
 end

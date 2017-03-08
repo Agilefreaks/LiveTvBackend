@@ -17,7 +17,6 @@ require_relative 'system/livetv/container'
 require 'rom/sql/rake_task'
 require 'sequel'
 
-# rubocop:disable Metrics/BlockLength
 namespace :db do
   task :setup do
     Livetv::Container.boot! :rom
