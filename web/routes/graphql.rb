@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# Define your routes like this:
 require 'schema'
 
 module Livetv
@@ -7,19 +6,16 @@ module Livetv
     plugin :json
 
     route 'graphql' do |r|
-      r.get do
-        query = r['query']
-        variables = r['variables']
-        result = Schema.execute(query, variables: variables)
-        result.to_json
-      end
+      r.is do
+        r.resolve('transactions.execute_query') do |execute_query|
+          execute_query.call(r) do |m|
+            m.success(&:to_json)
 
-      r.post do
-        params = JSON.parse(r.body.read)
-        query = params['query']
-        variables = params['variables']
-        result = Schema.execute(query, variables: variables)
-        result.to_json
+            m.failure do
+              # when will it fail?
+            end
+          end
+        end
       end
     end
   end
