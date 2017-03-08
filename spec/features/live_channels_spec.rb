@@ -33,6 +33,14 @@ RSpec.describe 'Live Channels', type: :request do
       end
     end
 
+    context 'including now playing with content' do
+      let(:query) { '{ live_channels { name now_playing { content { url } }  } }' }
+
+      it 'will return the now playing item' do
+        expect(result['data']['live_channels'].first['now_playing']['content']['url']).not_to be_nil
+      end
+    end
+
     context 'including items with content' do
       let(:query) { '{ live_channels { name items { content { title }  }  } }' }
 
