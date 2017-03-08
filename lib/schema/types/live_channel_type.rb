@@ -2,6 +2,7 @@
 require 'graphql'
 require 'schema/types/live_channel_item_type'
 require 'schema/resolvers/live_channel_items_resolver'
+require 'schema/resolvers/live_channel_now_playing_resolver'
 
 module Livetv
   module Types
@@ -11,6 +12,10 @@ module Livetv
 
       field :id, !types.ID, 'The id of the channel'
       field :name, !types.String, 'The name of the channel'
+      field :now_playing, LiveChannelItemType, 'The current playing item' do
+        complexity 2
+        resolve(Livetv::Resolvers::LiveChannelNowPLayingResolver.new)
+      end
       field :items, types[LiveChannelItemType], 'A list of items for this channel' do
         complexity 2
         resolve(Livetv::Resolvers::LiveChannelItemsResolver.new)

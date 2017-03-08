@@ -24,5 +24,13 @@ RSpec.describe 'Live Channels', type: :request do
         expect(result['data']['live_channels'].first['items'].count).to eq 5
       end
     end
+
+    context 'including now playing' do
+      let(:query) { '{ live_channels { name now_playing { starts_at }  } }' }
+
+      it 'will return the now playing item' do
+        expect(result['data']['live_channels'].first['now_playing']['starts_at']).not_to be_nil
+      end
+    end
   end
 end

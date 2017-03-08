@@ -32,6 +32,9 @@ gem 'slim'
 gem 'faker'
 
 group :development, :test do
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop', require: false
   gem 'pry-byebug', platform: :mri
   gem 'rubocop'
   gem 'rubocop-rspec'
