@@ -11,8 +11,8 @@ module Livetv
           execute_query.call(r) do |m|
             m.success(&:to_json)
 
-            m.failure do
-              # when will it fail?
+            m.failure do |error|
+              { error: error }.to_json
             end
           end
         end

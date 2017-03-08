@@ -8,7 +8,7 @@ module Operations
     include Dry::Monads::Try::Mixin
 
     def call(input)
-      Try() { Schema.execute(input[:query], variables: input[:variables].value) }.bind { |result| Dry::Monads::Right(result) }
+      Try(GraphQL::ExecutionError) { Schema.execute(input[:query], variables: input[:variables].value) }.bind { |result| Dry::Monads::Right(result) }.to_either
     end
   end
 end

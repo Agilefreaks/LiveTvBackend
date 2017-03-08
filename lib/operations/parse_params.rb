@@ -13,20 +13,20 @@ module Operations
 
     private
 
-    def parse_query_from(request)
-      if request['query']
-        Dry::Monads::Right(query: request['query'], variables: Dry::Monads::Maybe(request['variables']))
-      else
-        go_left
+      def parse_query_from(request)
+        if request['query']
+          Dry::Monads::Right(query: request['query'], variables: Dry::Monads::Maybe(request['variables']))
+        else
+          go_left
+        end
       end
-    end
 
-    def parse_body_from(request)
-      Try(JSON::ParserError) { JSON.parse(request.body.read) }.bind { |parsed_body| parse_query_from(parsed_body) }
-    end
+      def parse_body_from(request)
+        Try(JSON::ParserError) { JSON.parse(request.body.read) }.bind { |parsed_body| parse_query_from(parsed_body) }
+      end
 
-    def go_left
-      Dry::Monads::Left(:no_query)
-    end
+      def go_left
+        Dry::Monads::Left(:no_query)
+      end
   end
 end
