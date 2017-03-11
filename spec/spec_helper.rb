@@ -2,6 +2,7 @@
 ENV['RACK_ENV'] = 'test'
 
 require 'byebug'
+require 'rspec/its'
 
 SPEC_ROOT = Pathname(__FILE__).dirname
 

@@ -3,11 +3,14 @@ require 'types'
 
 module Livetv
   module Entities
-    class LiveChannel < ::Types::Struct
+    class UpcomingItem < ::Types::Struct
       constructor_type :symbolized
 
       attribute :id, ::Types::Strict::Int
-      attribute :name, ::Types::Strict::String
+
+      def title
+        'Upcoming'
+      end
     end
   end
 end

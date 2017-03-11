@@ -11,7 +11,7 @@ module Livetv
       config.listeners = true
 
       config.auto_register = %w(
-        lib/livetv
+        lib/livetv lib/operations
       )
     end
 

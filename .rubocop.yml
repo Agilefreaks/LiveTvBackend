@@ -5,3 +5,12 @@ Metrics/LineLength:
 
 Style/Documentation:
   Enabled: false
+
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+
+Style/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'

@@ -33,8 +33,8 @@ module Livetv
 
     private
 
-    def [](name)
-      attrs.fetch(name)
-    end
+      def [](name)
+        attrs.fetch(name)
+      end
   end
 end
